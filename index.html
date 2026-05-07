@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Love u💖</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* 🔹 Fundo animado com gradiente suave */
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+    }
+
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    /* 🔹 Cartão */
+    .card {
+      background: rgba(255,255,255,0.95);
+      padding: 30px;
+      border-radius: 25px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+      position: relative;
+      z-index: 2;
+      animation: fadeInScale 2s ease;
+      max-width: 90%;
+    }
+
+    @keyframes fadeInScale {
+      from {opacity: 0; transform: scale(0.7);}
+      to {opacity: 1; transform: scale(1);}
+    }
+
+    h1 {
+      color: #e91e63;
+      margin: 0 0 15px 0;
+      font-size: 1.8em;
+    }
+
+    p {
+      font-size: 16px;
+      color: #555;
+    }
+
+    /* 🔹 Botão */
+    button {
+      margin-top: 15px;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(45deg, #ff6fa3, #e91e63);
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: linear-gradient(45deg, #e91e63, #c2185b);
+      transform: scale(1.1);
+      box-shadow: 0 0 15px rgba(233,30,99,0.6);
+    }
+
+    /* 🔹 Mensagem */
+    #msg {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #e91e63;
+      font-weight: 500;
+      min-height: 120px;
+      white-space: pre-wrap;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    }
+
+    /* 🔹 Corações animados */
+    .heart {
+      position: absolute;
+      color: #e91e63;
+      font-size: 20px;
+      animation: fall linear infinite;
+      top: -10px;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    <h1>Para Fátima Albano Anly 💖</h1>
+    <p>Eu só queria te dizer que você é especial.</p>
+    <button onclick="mostrarMensagem()">Clica aqui 💌</button>
+    <p id="msg"></p>
+  </div>
+
+  <script>
+    // ✍️ efeito de escrita compatível com celular e desktop
+    function mostrarMensagem() {
+      const texto = `Passei a madrugada toda escrevendo este código, pensando em ti, Fátima.\nQueria poder expressar tudo que sinto…\nCada lembrança, cada sorriso que compartilhamos, permanece viva na minha mente.\nAs noites em que conversámos, os momentos que pareceram pequenos, mas que para mim foram enormes,\ncada detalhe permanece guardado como tesouro.\n\nNunca te vi como algo passageiro… sempre serás alguém especial para mim.\nMesmo na distância ou nas dificuldades, o que sinto continua presente,\num sentimento que não se apaga com o tempo.\n\nEspero que este pequeno gesto consiga transmitir um pouco do que tenho no coração.\nE, mesmo que as palavras pareçam insuficientes, saiba que cada letra escrita aqui foi pensada em ti,\ncom carinho, amor e sinceridade 💖`;
+      
+      let i = 0;
+      const msg = document.getElementById("msg");
+      msg.innerHTML = "";
+
+      function digitar() {
+        msg.innerHTML += texto[i];
+        i++;
+        if (i < texto.length) {
+          setTimeout(digitar, 50);
+        }
+      }
+
+      digitar();
+    }
+
+    // 💖 Corações caindo
+    function criarCoracao() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "💖";
+
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (2 + Math.random() * 3) + "s";
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    }
+
+    setInterval(criarCoracao, 300);
+  </script>
+
+</body>
+</html>
